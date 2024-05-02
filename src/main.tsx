@@ -7,6 +7,9 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { RecoilRoot } from "recoil";
 import theme from "./styles/theme.ts";
 import globalStyles from "./styles/globalStyle.ts";
+import Home from "./pages/Home.tsx";
+import Quiz from "./pages/Quiz.tsx";
+import MyPage from "./pages/MyPage.tsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -20,6 +23,20 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    children: [
+      {
+        path: "",
+        element: <Home />,
+      },
+      {
+        path: "quiz",
+        element: <Quiz />,
+      },
+      {
+        path: "mypage",
+        element: <MyPage />,
+      },
+    ],
   },
 ]);
 
