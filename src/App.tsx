@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import Header from "./components/header/Header";
 import { Outlet } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
   return (
@@ -8,6 +9,7 @@ const App = () => {
       <Header />
       <Container>
         <Outlet />
+        <Toaster />
       </Container>
     </>
   );
@@ -20,7 +22,7 @@ const Container = styled.div`
 
   height: 100%;
   width: 100%;
-  max-width: 1280px;
+  /* max-width: 1280px; */
 
   margin: 0 auto;
 `;

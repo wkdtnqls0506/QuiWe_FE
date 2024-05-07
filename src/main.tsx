@@ -9,6 +9,7 @@ import theme from "./styles/theme.ts";
 import globalStyles from "./styles/globalStyle.ts";
 import Home from "./pages/Home.tsx";
 import Quiz from "./pages/Quiz.tsx";
+import QuizInput from "./pages/QuizInput.tsx";
 import MyPage from "./pages/MyPage.tsx";
 
 const queryClient = new QueryClient({
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "quiz",
         element: <Quiz />,
+      },
+      {
+        path: "quiz/:id",
+        element: <QuizInput />,
       },
       {
         path: "mypage",
