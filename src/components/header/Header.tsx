@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import Logo from "../../assets/logo.svg?react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import theme from "../../styles/theme";
 import { login, logout, onUserStateChange } from "../../apis/firebase";
 import { useEffect, useState } from "react";
@@ -9,6 +9,7 @@ import { User } from "firebase/auth";
 const Header = () => {
   const location = useLocation();
   const pathName = location.pathname;
+  const params = useParams();
   const [user, setUser] = useState<User | null>();
 
   useEffect(() => {
@@ -33,7 +34,9 @@ const Header = () => {
         <Link to="/quiz">
           <CategoryName
             className={`chat ${
-              pathName === "/quiz" ? "selected_category" : ""
+              pathName === "/quiz" || pathName === `/quiz/${params.id}`
+                ? "selected_category"
+                : ""
             }`}
           >
             퀴즈
