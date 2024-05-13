@@ -11,6 +11,7 @@ import Home from "./pages/Home.tsx";
 import Quiz from "./pages/Quiz.tsx";
 import QuizDetail from "./pages/QuizDetail.tsx";
 import MyPage from "./pages/MyPage.tsx";
+import QuizSolve from "./pages/QuizSolve.tsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "quiz/:id",
         element: <QuizDetail />,
+      },
+      {
+        path: "quizSolve",
+        element: <QuizSolve />,
       },
       {
         path: "mypage",

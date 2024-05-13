@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import category from "../constants/category";
 import DetailInput from "../components/quizDetail/DetailInput";
 import CheckLevel from "../components/quizDetail/CheckLevel";
+import SubmitButton from "../components/quizDetail/SubmitButton";
 
 const QuizDetail = () => {
   const paramsId = useParams().id;
@@ -19,6 +20,7 @@ const QuizDetail = () => {
       <BoxContainer>
         <DetailInput />
         <CheckLevel />
+        <SubmitButton />
       </BoxContainer>
     </Container>
   );

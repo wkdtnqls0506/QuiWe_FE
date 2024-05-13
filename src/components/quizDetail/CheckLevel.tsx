@@ -1,13 +1,26 @@
 import styled from "@emotion/styled";
 import level from "../../constants/level";
 import theme from "../../styles/theme";
+import { useSearchParams } from "react-router-dom";
 
 const CheckLevel = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const handleClick = (levelId: string) => {
+    searchParams.set("level", levelId);
+    setSearchParams(searchParams);
+  };
+
   return (
     <Container>
       {level.map((item) => (
         <RadioButtonLabel key={item.id} htmlFor={item.id}>
-          <RadioButton type="radio" id={item.id} name="level" />
+          <RadioButton
+            type="radio"
+            id={item.id}
+            name="level"
+            onClick={() => handleClick(item.id)}
+          />
           <RadioName>{item.name}</RadioName>
         </RadioButtonLabel>
       ))}

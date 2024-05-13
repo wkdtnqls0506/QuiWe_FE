@@ -3,13 +3,17 @@ import theme from "../../styles/theme";
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import toast from "react-hot-toast";
+import { useSearchParams } from "react-router-dom";
 
 const DetailInput = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [inputText, setInputText] = useState("");
   const [textArr, setTextArr] = useState<string[]>([]);
 
-  const handleDeleteClick = (index: number) => {
-    setTextArr((prevArr) => prevArr.filter((_, i) => i !== index));
+  const handleDeleteClick = (topic: string) => {
+    setTextArr((prevArr) => prevArr.filter((item) => item !== topic));
+    searchParams.delete("detail", topic);
+    setSearchParams(searchParams);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,8 +38,12 @@ const DetailInput = () => {
       }
       setTextArr((prevArr) => [...prevArr, inputText]);
       setInputText("");
+      searchParams.append("detail", inputText);
+      setSearchParams(searchParams);
       if (textArr.length >= 3) {
         setTextArr((prevArr) => prevArr.slice(1));
+        searchParams.delete("detail", textArr[0]);
+        setSearchParams(searchParams);
       }
     }
   };
@@ -60,7 +68,7 @@ const DetailInput = () => {
             {topic}
             <IoClose
               className="closeIcon"
-              onClick={() => handleDeleteClick(index)}
+              onClick={() => handleDeleteClick(topic)}
             />
           </Topic>
         ))}
